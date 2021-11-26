@@ -1,26 +1,17 @@
 <script>
     import { TextArea, CopyButton } from "carbon-components-svelte";
-    let output = [];
-    let helperText = "";
 
-    function updateOutput(event) {
-        const value = event.target.value;
-        output = value.match(/\d{18}/g) || [];
-        helperText = output.length ? `${output.length} IDs found` : "";
-    }
+    $: value = "";
+    $: output = value.match(/\d{18}/g) || [];
 </script>
 
 <main>
     <h2>Extract Discord IDs From Text</h2>
-    <TextArea
-        labelText="Input"
-        placeholder="Enter Text"
-        on:input={updateOutput}
-    />
+    <TextArea labelText="Input" placeholder="Enter Text" bind:value />
     <TextArea
         labelText="Ouput"
         disabled
-        {helperText}
+        helperText={output.length && `${output.length} IDs found`}
         value={output.join(" ")}
     />
 
