@@ -15,7 +15,7 @@
     <TextArea
         labelText="Input"
         placeholder="Enter Text"
-        on:change={updateOutput}
+        on:input={updateOutput}
     />
     <TextArea
         labelText="Ouput"
