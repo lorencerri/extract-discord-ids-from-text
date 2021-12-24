@@ -1,13 +1,17 @@
 <script>
-    import { TextArea, CopyButton } from "carbon-components-svelte";
+    import { TextArea, CopyButton, TextInput } from "carbon-components-svelte";
 
-    $: value = "";
+    let value = "";
     $: output = value.match(/\d{18}/g) || [];
 </script>
 
 <main>
-    <h2>Extract Discord IDs From Text</h2>
+    <h2>Extract Discord IDs From Texts</h2>
     <TextArea labelText="Input" placeholder="Enter Text" bind:value />
+    <TextInput
+        labelText="Only parse lines with text"
+        placeholder="Enter text..."
+    />
     <TextArea
         labelText="Ouput"
         disabled
